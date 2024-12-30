@@ -44,9 +44,11 @@ body {
     justify-content: center;
 }
 
-.f-info-socials i {
+.f-info-socials i,
+a {
     font-size: 1.2rem;
     margin-right: 1rem;
+    color: #222222;
 }
 
 .f-info {
