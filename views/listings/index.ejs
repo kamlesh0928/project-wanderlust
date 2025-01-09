@@ -1,107 +1,175 @@
 <% layout("/layouts/boilerplate") %>
 
-<style>
-    #filters {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-    
-    .filter {
-        text-align: center;
-        margin-right: 2rem;
-        margin-top: 2rem;
-        opacity: 0.7;
-    }
+    <style>
+        .navbar-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
 
-    .filter:hover {
-        opacity: 1;
-        cursor: pointer;
-    }
+        #filters {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            white-space: nowrap;
+            flex: 1;
+            padding: 1rem 0;
+            margin: 0 2rem;
+        }
 
-    .filter p {
-        font-size: 0.8rem;
-    }
+        #filters::-webkit-scrollbar {
+            display: none;
+        }
 
-    .tax-info {
-        display: none;
-    }
+        .filter {
+            flex: 0 0 auto;
+            text-align: center;
+            margin-right: 2rem;
+            opacity: 0.7;
+        }
 
-    .tax-toggle {
-        height: 2.8rem;
-        border: 1px solid black;
-        border-radius: 1rem;
-        padding: 1rem;
-        margin-left: 2rem;
-        display: flex;
-        align-items: center;
-    }
+        .filter:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
 
-</style>
+        .filter p {
+            font-size: 0.8rem;
+        }
 
-    <div id="filters">
-        <div class="filter">
-            <div><i class="fa-solid fa-fire"></i></div>
-            <p>Trending</p>
-        </div>
-        
-        <div class="filter">
-            <div><i class="fa-solid fa-bed"></i></div>
-            <p>Rooms</p>
+        #tax-toggle {
+            flex: 0 0 300px;
+            /* Fixed width */
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+            border-radius: 1rem;
+            background-color: white;
+            z-index: 10;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid #C2AEAE;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+        }
+
+        .left-btn {
+            left: 0.1rem;
+        }
+
+        .right-btn {
+            right: 310px;
+        }
+    </style>
+
+    <div class="navbar-container">
+        <button class="scroll-btn left-btn"><i class="fa-solid fa-angle-left"></i></button>
+
+        <div id="filters">
+            <div class="filter">
+                <div><i class="fa-solid fa-fire"></i></div>
+                <p>Trending</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-regular fa-snowflake"></i></div>
+                <p>Arctic</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-brands fa-fort-awesome"></i></div>
+                <p>Castles</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-person-swimming"></i></div>
+                <p>Amazing Pools</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-campground"></i></div>
+                <p>Camping</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-water"></i></div>
+                <p>Lake</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-umbrella-beach"></i></div>
+                <p>Beach</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-bed"></i></div>
+                <p>Rooms</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-mountain-city"></i></div>
+                <p>Iconic cities</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-mountain"></i></div>
+                <p>Mountains</p>
+            </div>
+
+            <div class="filter">
+                <div><i class="fa-solid fa-tower-observation"></i></div>
+                <p>Towers</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-cow"></i></div>
+                <p>Farms</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-regular fa-snowflake"></i></div>
+                <p>Arctic</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-igloo"></i></div>
+                <p>Domes</p>
+            </div>
+            
+            <div class="filter">
+                <div><i class="fa-solid fa-ship"></i></div>
+                <p>Boats</p>
+            </div>
         </div>
 
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain-city"></i></div>
-            <p>Iconic cities</p>
-        </div>
-        
-        <div class="filter">
-            <div><i class="fa-solid fa-mountain"></i></div>
-            <p>Mountains</p>
-        </div>
+        <button class="scroll-btn right-btn"><i class="fa-solid fa-angle-right"></i></button>
 
-        <div class="filter">
-            <div><i class="fa-brands fa-fort-awesome"></i></div>
-            <p>Castles</p>
-        </div>
-        
-        <div class="filter">
-            <div><i class="fa-solid fa-person-swimming"></i></div>
-            <p>Amazing Pools</p>
-        </div>
-        
-        <div class="filter">
-            <div><i class="fa-solid fa-campground"></i></div>
-            <p>Camping</p>
-        </div>
-
-        <div class="filter">
-            <div><i class="fa-solid fa-cow"></i></div>
-            <p>Farms</p>
-        </div>
-        
-        <div class="filter">
-            <div><i class="fa-regular fa-snowflake"></i></div>
-            <p>Arctic</p>
-        </div>
-
-        <div class="filter">
-            <div><i class="fa-solid fa-igloo"></i></div>
-            <p>Domes</p>
-        </div>
-        
-        <div class="filter">
-            <div><i class="fa-solid fa-ship"></i></div>
-            <p>Boats</p>
-        </div>
-
-        <div class="tax-toggle">
+        <div id="tax-toggle">
             <div class="form-check-reverse form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
                 <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
             </div>
         </div>
+
+
     </div>
+
+
 
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
         <% for(let list of allListings) { %>
@@ -115,7 +183,7 @@
                                 <%= list.title %>
                             </b> <br>
                             &#8377; <%= list.price.toLocaleString("en-IN") %> night
-                            <i class="tax-info" >&nbsp;&nbsp; + 18% GST</i>
+                                <i class="tax-info">&nbsp;&nbsp; + 18% GST</i>
                         </p>
                     </div>
                 </div>
@@ -124,19 +192,31 @@
     </div>
 
 
-<script>
-    let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    <script>
+        let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+        const filters = document.getElementById("filters");
+        const leftBtn = document.querySelector(".left-btn");
+        const rightBtn = document.querySelector(".right-btn");
 
-    taxSwitch.addEventListener("click", () => {
-        let taxInfo = document.getElementsByClassName("tax-info");
+        leftBtn.addEventListener("click", () => {
+            filters.scrollLeft -= 200; // Scroll left by 200px
+        });
 
-        for(let info of taxInfo) {
+        rightBtn.addEventListener("click", () => {
+            filters.scrollLeft += 200; // Scroll right by 200px
+        });
 
-            if(info.style.display != "inline") {
-                info.style.display = "inline";
-            } else {
-                info.style.display = "none";
+
+        taxSwitch.addEventListener("click", () => {
+            let taxInfo = document.getElementsByClassName("tax-info");
+
+            for (let info of taxInfo) {
+
+                if (info.style.display != "inline") {
+                    info.style.display = "inline";
+                } else {
+                    info.style.display = "none";
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
