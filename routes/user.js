@@ -25,7 +25,4 @@ router
 
 router.get("/logout", userController.logout);
 
-// Reset Password
-router.get("/login/forgot-pass", wrapAsync(userController.renderNewPassword));
-
 module.exports = router;
