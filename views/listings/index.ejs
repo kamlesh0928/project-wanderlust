@@ -1,82 +1,5 @@
 <% layout("/layouts/boilerplate") %>
 
-    <style>
-        .navbar-container {
-            display: flex;
-            align-items: center;
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        #filters {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            white-space: nowrap;
-            flex: 1;
-            padding: 1rem 0;
-            margin: 0 2rem;
-        }
-
-        #filters::-webkit-scrollbar {
-            display: none;
-        }
-
-        .filter {
-            flex: 0 0 auto;
-            text-align: center;
-            margin-right: 2rem;
-            opacity: 0.7;
-        }
-
-        .filter:hover {
-            opacity: 1;
-            cursor: pointer;
-        }
-
-        .filter p {
-            font-size: 0.8rem;
-        }
-
-        #tax-toggle {
-            flex: 0 0 300px;
-            /* Fixed width */
-            height: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid black;
-            border-radius: 1rem;
-            background-color: white;
-            z-index: 10;
-        }
-
-        .scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 2rem;
-            height: 2rem;
-            border: 1px solid #C2AEAE;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 20;
-        }
-
-        .left-btn {
-            left: 0.1rem;
-        }
-
-        .right-btn {
-            right: 310px;
-        }
-    </style>
-
     <div class="navbar-container">
         <button class="scroll-btn left-btn"><i class="fa-solid fa-angle-left"></i></button>
 
@@ -170,7 +93,6 @@
     </div>
 
 
-
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
         <% for(let list of allListings) { %>
             <a href="/listings/<%= list._id %>" class="listing-link">
@@ -192,31 +114,4 @@
     </div>
 
 
-    <script>
-        let taxSwitch = document.getElementById("flexSwitchCheckDefault");
-        const filters = document.getElementById("filters");
-        const leftBtn = document.querySelector(".left-btn");
-        const rightBtn = document.querySelector(".right-btn");
-
-        leftBtn.addEventListener("click", () => {
-            filters.scrollLeft -= 200; // Scroll left by 200px
-        });
-
-        rightBtn.addEventListener("click", () => {
-            filters.scrollLeft += 200; // Scroll right by 200px
-        });
-
-
-        taxSwitch.addEventListener("click", () => {
-            let taxInfo = document.getElementsByClassName("tax-info");
-
-            for (let info of taxInfo) {
-
-                if (info.style.display != "inline") {
-                    info.style.display = "inline";
-                } else {
-                    info.style.display = "none";
-                }
-            }
-        });
-    </script>
+    <script src="js/scrollAndTax.js"></script>
