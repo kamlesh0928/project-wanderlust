@@ -6,11 +6,11 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
     res.render("listings/index.ejs", { allListings });
-}
+};
 
 module.exports.newListing = (req, res) => {
     res.render("listings/new.ejs");
-}
+};
 
 module.exports.showListing = async (req, res) => {
 
@@ -22,7 +22,7 @@ module.exports.showListing = async (req, res) => {
         res.redirect("/listings");
     }
     res.render("listings/show.ejs", { listing });
-}
+};
 
 module.exports.createListing = async (req, res, next) => {
 
@@ -45,7 +45,7 @@ module.exports.createListing = async (req, res, next) => {
 
     req.flash("success", "new Listing Created!");
     res.redirect("/listings");
-}
+};
 
 module.exports.editListing = async (req, res) => {
 
@@ -61,7 +61,7 @@ module.exports.editListing = async (req, res) => {
     originalImgUrl = originalImgUrl.replace("/upload", "/upload/h_300,w_250");
 
     res.render("listings/edit.ejs", { listing, originalImgUrl });
-}
+};
 
 module.exports.updateListing = async (req, res) => {
 
@@ -77,7 +77,7 @@ module.exports.updateListing = async (req, res) => {
 
     req.flash("success", "Listing Updated!");
     res.redirect(`/listings/${id}`);
-}
+};
 
 module.exports.destroyListing = async (req, res) => {
 
@@ -87,4 +87,4 @@ module.exports.destroyListing = async (req, res) => {
 
     req.flash("success", "Listing Deleted!");
     res.redirect("/listings");
-}
+};

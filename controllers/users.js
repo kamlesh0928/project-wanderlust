@@ -48,3 +48,7 @@ module.exports.logout = (req, res, next) => {
         res.redirect("/listings");
     });
 }
+
+module.exports.renderNewPassword = async (req, res) => {
+    res.render("listings/forgetPassword.ejs");
+};

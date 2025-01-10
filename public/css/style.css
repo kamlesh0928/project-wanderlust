@@ -200,3 +200,10 @@ a {
 .right-btn {
     right: 310px;
 }
+
+/* Forget Password for login.ejs */
+
+.forgot-password {
+    color: #fe424d;
+    text-decoration: none;
+}

@@ -29,7 +29,8 @@ app.use(express.static(path.join(__dirname, "/public")));
 
 app.engine("ejs", ejsMate);
 
-const dbUrl = process.env.ATLASDB_URL;
+// const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = "mongodb://127.0.0.1:27017/wanderlust";
 
 main()
     .then(() => {
@@ -87,18 +88,6 @@ app.use((req, res, next) => {
     res.locals.currUser = req.user;
     next();
 });
-
-// app.get("/demouser", async (req, res) => {
-
-//     let fakeUser = new User({
-//         email: "abc@gmail.com",
-//         username: "chimo0928"
-//     });
-
-//     let registeredUser = await User.register(fakeUser, "helloworld");
-
-//     res.send(registeredUser);
-// });
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
