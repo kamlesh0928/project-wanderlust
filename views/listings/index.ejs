@@ -93,25 +93,28 @@
     </div>
 
 
-    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-        <% for(let list of allListings) { %>
-            <a href="/listings/<%= list._id %>" class="listing-link">
-                <div class="card col listing-card" style="width: 20rem;">
-                    <img src=<%=list.image.url %> class="card-img-top" alt="listing-image" style="height: 20rem;">
-                    <div class="card-img-overlay"></div>
-                    <div class="card-body">
-                        <p class="card-text">
-                            <b>
-                                <%= list.title %>
-                            </b> <br>
-                            &#8377; <%= list.price.toLocaleString("en-IN") %> night
-                                <i class="tax-info">&nbsp;&nbsp; + 18% GST</i>
-                        </p>
-                    </div>
+    <div class="container mt-3">
+        <div class="row">
+            <% for (let list of allListings) { %>
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <a href="/listings/<%= list._id %>" class="listing-link">
+                        <div class="card listing-card h-100">
+                            <img src="<%= list.image.url %>" class="card-img-top" alt="listing-image" style="height: 20rem; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <b><%= list.title %></b><br>
+                                    &#8377; <%= list.price.toLocaleString("en-IN") %> night
+                                    <i class="tax-info">&nbsp;&nbsp;+ 18% GST</i>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </a>
             <% } %>
+        </div>
     </div>
+    
+    
 
 
     <script src="js/scrollAndTax.js"></script>
