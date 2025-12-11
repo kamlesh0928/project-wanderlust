@@ -22,17 +22,17 @@ const userRouter = require("./routes/user.js");
 
 const dbUrl = process.env.ATLASDB_URL;
 
+async function main() {
+  await mongoose.connect(dbUrl);
+}
+
 main()
   .then(() => {
-    console.log("Connnected to DB.");
+    console.log("Connected to DB");
   })
   .catch((err) => {
     console.log(err);
   });
-
-async function main() {
-  await mongoose.connect(dbUrl);
-}
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -84,11 +84,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// Routes
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-// Root Endpoint Redirect
 app.get("/", (req, res) => {
   res.redirect("/listings");
 });
@@ -102,6 +102,10 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { message });
 });
 
-app.listen(8080, () => {
-  console.log(`Server is listening to port 8080`);
-});
+if (require.main === module) {
+  app.listen(8080, () => {
+    console.log("Server is listening to port 8080");
+  });
+}
+
+module.exports = app;
